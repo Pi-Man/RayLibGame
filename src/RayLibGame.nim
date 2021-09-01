@@ -35,6 +35,8 @@ when isMainModule:
   setTargetFPS(60)
   setCameraMode(playerCam, cint CameraMode.CUSTOM)
 
+  var model = loadModel("assets/katana.obj")
+
   while not windowShouldClose():
     deltaTime = getFrameTime()
 
@@ -51,6 +53,7 @@ when isMainModule:
       clearBackground(Raywhite)
       beginMode3D(playerCam)
       block mode3d:
+        drawModel(model, vector3Zero(), cfloat 0.01, White)
         drawCubeWires(left, 1, 1, 1, Red)
         drawCubeWires(up, 1, 1, 1, Green)
         drawCubeWires(forward, 1, 1, 1, Blue)
