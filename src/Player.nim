@@ -1,7 +1,9 @@
 import nimraylib_now/[raylib, raymath]
 
-const movementSpeed: cfloat = 1.0
-const mouseSensitivity: cfloat = 1.0
+const 
+  movementSpeed: cfloat = 1.0
+  mouseSensitivity: cfloat = 1.0
+  pi: cfloat = 3.141592653589793238462643383279502
 
 type Player* = object
   position*: Vector3
@@ -12,35 +14,42 @@ type Player* = object
 var
   prevMousePoint, mousePoint: Vector2
 
-proc movePlayer*(player: var Player) =
+func getRotation*(player: Player): Quaternion =
+  let yawQuat = fromAxisAngle(Vector3(x: 0, y: 1, z: 0), player.yaw)
+  let pitchQuat = fromAxisAngle(Vector3(x: 1, y: 0, z: 0), player.pitch)
+  result = yawQuat * pitchQuat
+
+proc updatePlayer*(player: var Player) =
 
   mousePoint = getMousePosition()
   let deltaMouse = mousePoint - prevMousePoint
   prevMousePoint = mousePoint
 
-  player.yaw += deltaMouse.x * mouseSensitivity
-  player.pitch += deltaMouse.y * mouseSensitivity
+  player.yaw += -deltaMouse.x * mouseSensitivity / 100
+  player.pitch += deltaMouse.y * mouseSensitivity / 100
+
+  if (player.pitch > pi/2):
+    player.pitch = pi/2
+  elif (player.pitch < -pi/2):
+    player.pitch = -pi/2
 
   player.velocity = Vector3()
-  if (isKeyDown(W.cint)):
+  if (isKeyDown(cint W)):
     player.velocity.z += movementSpeed
-  if (isKeyDown(S.cint)):
+  if (isKeyDown(cint S)):
     player.velocity.z -= movementSpeed
-  if (isKeyDown(D.cint)):
+  if (isKeyDown(cint A)):
     player.velocity.x += movementSpeed
-  if (isKeyDown(A.cint)):
+  if (isKeyDown(cint D)):
     player.velocity.x -= movementSpeed
-  if (isKeyDown(SPACE.cint)):
+  if (isKeyDown(cint SPACE)):
     player.velocity.y += movementSpeed
-  if (isKeyDown(LEFT_ALT.cint)):
+  if (isKeyDown(cint LEFT_ALT)):
     player.velocity.y -= movementSpeed
   
-  player.slowMovement = isKeyDown(LEFT_SHIFT.cint);
+  player.slowMovement = isKeyDown(cint LEFT_SHIFT);
 
   if (player.slowMovement):
     player.velocity *= 0.5
 
-  let yawQuat = fromAxisAngle(Vector3(x: 0, y: 1, z: 0), player.yaw)
-  let pitchQuat = fromAxisAngle(Vector3(x: 0, y: 0, z: 1), player.pitch)
-
-  player.position += player.velocity.rotateByQuaternion(pitchQuat * yawQuat)
+  player.position += player.velocity.rotateByQuaternion(player.getRotation())
