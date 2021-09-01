@@ -3,9 +3,9 @@ import nimraylib_now/[raylib, raymath]
 const movementSpeed: cfloat = 1.0
 const mouseSensitivity: cfloat = 1.0
 
-type Player = object
+type Player* = object
   position*: Vector3
-  yaw, pitch: cfloat
+  yaw*, pitch*: cfloat
   velocity*: Vector3
   slowMovement*: bool
 

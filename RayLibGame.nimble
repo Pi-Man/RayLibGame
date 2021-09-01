@@ -15,4 +15,4 @@ before build:
 # Dependencies
 
 requires "nim >= 1.5.1"
-requires "nimraylib_now"
+requires "nimraylib_now >= 0.13.1"

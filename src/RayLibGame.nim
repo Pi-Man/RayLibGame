@@ -1,5 +1,6 @@
 import nimraylib_now/[raylib, raymath]
 import MathUtils
+import Player
 
 when isMainModule:
   type Sphere = object
@@ -17,8 +18,9 @@ when isMainModule:
       , target: Vector3(x: 0, y: 0, z: 1)
       , up: Vector3(x: 0, y: 1, z: 0)
       , fovy: 90
-      , `type`: PERSPECTIVE
+      , projection: PERSPECTIVE.cint
     )
+    player: Player
     playerSphere: Sphere = Sphere(
       position: Vector3()
       , radius: 1
@@ -28,10 +30,13 @@ when isMainModule:
 
   initWindow(800, 600, "Hello World")
   setTargetFPS(60)
-  setCameraMode(playerCam, CameraMode.CUSTOM)
+  setCameraMode(playerCam, CameraMode.CUSTOM.cint)
 
   while not windowShouldClose():
     deltaTime = getFrameTime()
+
+    player.movePlayer()
+    playerSphere.position = player.position
 
     var targetPos = playerSphere.position
     targetPos.z += cameraOffsetZ
