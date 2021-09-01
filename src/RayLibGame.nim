@@ -1,6 +1,6 @@
+import std/[tables]
 import nimraylib_now/[raylib, raymath]
-import MathUtils
-import Player
+import MathUtils, Enemy, Player
 
 when isMainModule:
   type Sphere = object
@@ -28,6 +28,8 @@ when isMainModule:
     )
     deltaTime: cfloat = 0
 
+  #let model = loadModel("assets/katana.obj")
+
   initWindow(800, 600, "Hello World")
   setTargetFPS(60)
   setCameraMode(playerCam, CameraMode.CUSTOM.cint)
@@ -48,8 +50,9 @@ when isMainModule:
       clearBackground(Raywhite)
       beginMode3D(playerCam)
       block mode3d:
+        #drawModel(model, playerSphere.position, 1, Raywhite)
         drawSphere(playerSphere.position, playerSphere.radius, playerSphere.color)
       endMode3D()
-      drawText("Hello world", 200, 200, 20, Lightgray)
+      drawText("Hello My Darling, Hello My Baby", 200, 200, 20, Lightgray)
     endDrawing()
   closeWindow()
