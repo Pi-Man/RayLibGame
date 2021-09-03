@@ -1,1 +1,37 @@
-<mxfile host="app.diagrams.net" modified="2021-09-02T22:34:04.055Z" agent="5.0 (Windows)" etag="uu329yyJI34HJqDL_ilP" version="14.6.9" type="github"><diagram id="p1DrfTU0DVXSozV8l-NP" name="Page-1">dZHBEoIgEEC/hrtCk3Y2q0snD50Z2YQZdBmk0fr6dJCMsWY4LG/fsrAQVrTj2XIjryhAE5qIkbAjoTTdUUrmlYinJ1meeNBYJRZpBZV6wQKD9lAC+kh0iNopE8Mauw5qFzFuLQ6xdkcddzW8gQ2oaq639KaEk57mNFv5BVQjQ+d0f/CZlgd5eUkvucDhC7GSsMIiOh+1YwF6Hl6Yi687/cl+Lmahcz8KpmA9e9pEP8TKNw==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-09-03T02:48:06.025Z" agent="5.0 (Windows)" etag="Uu6jFEZZlBnz-XTP-nTT" version="14.6.9" type="github">
+  <diagram id="p1DrfTU0DVXSozV8l-NP" name="Page-1">
+    <mxGraphModel dx="460" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-1" value="Enemy" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="160" height="254" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-2" value="+ transform: Transform&#xa;+ health: int&#xa;+ model: ptr Model&#xa;+ type&#xa;+ attackSpeed: float&#xa;+ moveSpeed: float&#xa;+ movePattern&#xa;+ projectileType&#xa;+ projectileSpeed&#xa;+ projectilePattern&#xa;+ attackPattern&#xa;+ elapsedLifeTime&#xa;&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1RwPSMrucvhPZPjeh6-D-1">
+          <mxGeometry y="26" width="160" height="194" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="1RwPSMrucvhPZPjeh6-D-1">
+          <mxGeometry y="220" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-4" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1RwPSMrucvhPZPjeh6-D-1">
+          <mxGeometry y="228" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-5" value="Player" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="210" y="10" width="160" height="204" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-6" value="+ transform: Transform&#xa;+ health: int&#xa;+ yaw&#xa;+ pitch&#xa;+ moveSpeed: float&#xa;+ playerSettings&#xa;+ lastMousePos&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1RwPSMrucvhPZPjeh6-D-5">
+          <mxGeometry y="26" width="160" height="144" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="1RwPSMrucvhPZPjeh6-D-5">
+          <mxGeometry y="170" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-8" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1RwPSMrucvhPZPjeh6-D-5">
+          <mxGeometry y="178" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="1RwPSMrucvhPZPjeh6-D-10" value="&lt;div&gt;List of Transform (enemy)&lt;/div&gt;&lt;div&gt;List of Models (enemy)&lt;/div&gt;&lt;div&gt;List of health (enemy)&lt;/div&gt;&lt;div&gt;List of attack speed (enemy)&lt;/div&gt;&lt;div&gt;List of move speed (enemy)&lt;/div&gt;&lt;div&gt;List of lifeTimes (enemy)&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;AttackSystem (attackSpeed, elapsedLifeTime, Transform, projectileType, projectileSpeed, projectilePattern)&lt;br&gt;&lt;/div&gt;&lt;div&gt;DrawSystem(transform, model)&lt;br&gt;&lt;/div&gt;&lt;div&gt;MoveViaPatternSystem(transform, patternFunc, speed, elapsedLifeTime)&lt;br&gt;&lt;/div&gt;" style="html=1;labelPosition=center;verticalLabelPosition=middle;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="330" width="600" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
