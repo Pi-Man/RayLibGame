@@ -1,5 +1,6 @@
-bin
-assets
+bin/
+assets/
+.vscode/
 
 libraylibdll.a
 libraylib.a

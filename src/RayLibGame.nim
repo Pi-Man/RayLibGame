@@ -1,6 +1,6 @@
 import std/[tables]
 import nimraylib_now/[raylib, raymath]
-import MathUtils, Enemy, Player
+import MathUtils, EnemySystem, Player, Rendering
 
 when isMainModule:
   type Sphere = object
@@ -30,16 +30,33 @@ when isMainModule:
       , color: Blue
     )
     deltaTime: cfloat = 0
-
-  #let model = loadModel("assets/katana.obj")
+    transformTable = initTable[uint64, Transform]()
+    modelTable = initTable[uint64, ModelRef]()
+    healthTable = initTable[uint64, int8]()
+    attackSpeedTable = initTable[uint64, cfloat]()
+    moveSpeedTable = initTable[uint64, cfloat]()
+    lifeTimeTable = initTable[uint64, cfloat]()
 
   initWindow(800, 600, "Hello World")
   setTargetFPS(60)
   setCameraMode(playerCam, cint CameraMode.CUSTOM)
 
-  var model = loadModel("assets/katana.obj")
+  var
+    model = loadModel("assets/katana.obj")
+    enemyPos1 = Transform(translation: vector3Zero(), rotation: quaternionIdentity(), scale: vector3One() * 2)
+    enemyPos2 = enemyPos1
+    katanaModelRef = ModelRef()
 
+  katanaModelRef[] = model
+  katanaModelRef.transform = scale(1/300, 1/300, 1/300)
+  enemyPos2.translation.x -= 10
+
+  transformTable[0] = enemyPos1
+  transformTable[1] = enemyPos2
+  modelTable[0] = katanaModelRef
+  modelTable[1] = katanaModelRef
   while not windowShouldClose():
+
     deltaTime = getFrameTime()
 
     player.updatePlayer()
@@ -52,10 +69,10 @@ when isMainModule:
 
     beginDrawing()
     block drawing:
-      clearBackground(Raywhite)
+      clearBackground(Black)
       beginMode3D(playerCam)
       block mode3d:
-        drawModel(model, vector3Zero(), cfloat 0.01, White)
+        draw(transformTable, modelTable)
         drawCubeWires(left, 1, 1, 1, Red)
         drawCubeWires(up, 1, 1, 1, Green)
         drawCubeWires(forward, 1, 1, 1, Blue)
