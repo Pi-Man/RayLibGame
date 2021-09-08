@@ -5,3 +5,8 @@ assets/
 libraylibdll.a
 libraylib.a
 raylib.dll
+
+#testament output
+nimcache/
+megatest.*
+outputGotten.txt
