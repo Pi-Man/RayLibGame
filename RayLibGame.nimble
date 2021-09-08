@@ -12,6 +12,8 @@ binDir        = "bin"
 before build:
   cpDir("assets", binDir & "/assets")
 
+task test, "Runs testament pattern tests/*.nim":
+  exec "testament pattern \"tests/*.nim\""
 # Dependencies
 
 requires "nim >= 1.5.1"
