@@ -14,6 +14,9 @@ before build:
 
 task test, "Runs testament pattern tests/*.nim":
   exec "testament pattern \"tests/*.nim\""
+
+task html, "Generates html":
+  exec "testament html"
 # Dependencies
 
 requires "nim >= 1.5.1"

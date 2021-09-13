@@ -9,6 +9,8 @@ raylib.dll
 #testament output
 testresults/
 tests/*.exe
+tests/*.js
 nimcache/
 megatest.*
 outputGotten.txt
+testresults.html
